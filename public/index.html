@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <title>What's the Weather?</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row city-search">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="page-title">Welcome to Weather Chat</h2>
+                <h4>Search for your city below</h4>
+                <input type="text" placeholder="City" id="city-text">
+                <button type="button" class="btn btn-primary add-city">Search</button>
+            </div>
+        </div>
+        <div class="row city-section">
+            
+        </div>
+    </div>
+
+  <script type="text/javascript" src="jquery/dist/jquery.min.js"></script>
+  <!-- <script> Next Version - add drop down of cities- 
+        $(function(){
+          $("#city-text").load("city_list.html"); 
+        });
+</script>  -->
+  <script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="handlebars/dist/handlebars.min.js"></script>
+  <script id="weather-card-template" type="text/x-handlebars-template">
+        {{#each weatherCard}}
+        <div class="col-md-6">
+                <div class="card weather-card w{{weatherId}}">
+                    <div class="card-body text-center">
+                        <h3 class="card-title text-center">
+                                {{name}}, {{temperature}} Celcius, {{weather}}
+                        </h3>
+                        <p> {{weatherDescription}}</p>
+                        <h4>Add Comment</h4>
+                        <input type="text" name="Comment" placeholder="Comment" id="comment-text"> 
+                        <button type="reset" class="btn btn-primary add-comment">Add Comment</button>
+                        <ul class="comment-section list-group list-group-flush"> {{#each comments}}
+                            <li class= "list-group-item">{{comment}}</li> {{/each}}
+                        </ul>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+    <script type="text/javascript" src="scripts.js"></script>
+</body>
+</html>

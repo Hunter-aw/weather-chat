@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background: url(https://assets.heart.co.uk/2017/28/weather-1499781833-herowidev4-0.jpg);
+    background-size: 110%;
+    background-repeat: no-repeat;
+
+}
+
+#city-text {
+    width: 80%
+}
+
+.city-search {
+    margin-top: 50px;
+}
+.w500 {
+    background: url(https://i.gifer.com/E3K8.gif);
+    color: white
+}
+.weather-card{
+    margin: 10px;
+    border-radius: 50%;
+    height: 15rem;
+}
+.comment-section {
+    overflow-y: scroll
+}
+.w801{
+    background: url(https://media1.tenor.com/images/a9b3e91e8db7b177b0e3fa7c67a2ecfa/tenor.gif?itemid=4610991)
+}
