@@ -62,6 +62,24 @@ const weatherApp = function () {
         var newHTML = template(weatherObj)
         $('.city-section').append(newHTML)
     }
+
+    const removeCard = function (cardId) {
+        for (let i in weatherCards) {
+          if (cardId === weatherCards[i].id) {
+            weatherCards.splice(i, 1)
+          }
+        }
+        saveWeatherToStorage()
+      }
+
+    const addComment = function(cardId, text) {
+        for (let i in weatherCards) {
+            if (cardId === weatherCards[i].id) {
+                weatherCards[i].addNewComment(text);
+            }
+        }
+        saveWeatherToStorage()
+    }
     
     const fetchWeather = function (city) {
         $.ajax({
@@ -76,7 +94,9 @@ const weatherApp = function () {
 
     return {
         fetchWeather: fetchWeather,
-        updateWeather: updateWeather
+        updateWeather: updateWeather,
+        removeCard: removeCard,
+        addComment: addComment
     }
 
 }
@@ -88,4 +108,18 @@ app.updateWeather()
 $('.add-city').on('click', function () {
     let city = $('#city-text').val()
     app.fetchWeather(city)
+})
+$('.city-section').on('click', '.card-remove', function() {
+    let $weatherCard = $(this).closest('.weather-card')
+    let cardId = $weatherCard.data().id;
+    app.removeCard(cardId)
+    app.updateWeather()
+})
+$('.city-section').on('click', '.add-comment', function() {
+    let $weatherCard = $(this).closest('.weather-card')
+    let cardId = $weatherCard.data().id;
+    let commentText = $(this).prev('#comment-text').val()
+    app.addComment(cardId, commentText)
+    app.updateWeather()
+
 })
