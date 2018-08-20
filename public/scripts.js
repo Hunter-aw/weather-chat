@@ -59,8 +59,8 @@ const weatherApp = function () {
         }
         var source = $('#weather-card-template').html()
         var template = Handlebars.compile(source)
-        var newHTML = template(weatherObj)
-        $('.city-section').append(newHTML)
+            var newHTML = template(weatherObj)
+            $('.city-section').append(newHTML)
     }
 
     const removeCard = function (cardId) {
@@ -80,6 +80,21 @@ const weatherApp = function () {
         }
         saveWeatherToStorage()
     }
+
+    const removeComment = function(cardId, commentId) {
+        for (let i in weatherCards) {
+            let currentCard = weatherCards[i]
+            if (cardId === currentCard.id) {
+                let cardComments = currentCard.comments
+                for (j in cardComments) {
+                    if (commentId === cardComments[j].comment_id) {
+                        cardComments.splice(j, 1)
+                        break;
+                    }
+                } 
+            }
+        } saveWeatherToStorage();
+    }
     
     const fetchWeather = function (city) {
         $.ajax({
@@ -96,7 +111,8 @@ const weatherApp = function () {
         fetchWeather: fetchWeather,
         updateWeather: updateWeather,
         removeCard: removeCard,
-        addComment: addComment
+        addComment: addComment,
+        removeComment: removeComment
     }
 
 }
@@ -121,5 +137,18 @@ $('.city-section').on('click', '.add-comment', function() {
     let commentText = $(this).prev('#comment-text').val()
     app.addComment(cardId, commentText)
     app.updateWeather()
-
 })
+$('.city-section').on('click', '.remove-comment', function() {
+    let $clickedComment = $(this).closest('.list-group-item')
+    let commentId =$clickedComment.data().id;
+    let cardId = $(this).closest('.weather-card').data().id
+    app.removeComment(cardId, commentId)
+    app.updateWeather()
+})
+
+$(document).ready(function(){
+    $('#city-text').keypress(function(e){
+      if(e.keyCode==13)
+      $('.add-city').click();
+    });
+});

@@ -46,8 +46,8 @@
                         <input type="text" name="Comment" placeholder="Comment" id="comment-text"> 
                         <button type="reset" class="btn btn-primary add-comment">Add Comment</button>
                         <ul class="comment-section list-group list-group-flush"> {{#each comments}}
-                                <li class= "list-group-item">{{comment}}
-                                    <span class = "pull-right"><i class="fa fa-trash-o"></i></span>
+                                <li class= "list-group-item" data-id={{comment_id}}>{{comment}}
+                                    <span class = "pull-right remove-comment"><i class="fa fa-trash-o"></i></span>
                                 </li> {{/each}}
                             </ul>
                     </div>

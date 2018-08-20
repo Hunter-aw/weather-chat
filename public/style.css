@@ -13,21 +13,56 @@ body {
 .city-search {
     margin-top: 50px;
 }
-.w500 {
-    background: url(https://i.gifer.com/E3K8.gif);
-    color: white
-}
 .card{
     margin: 10px;
     border-radius: 50%;
     height: 15rem;
-    overflow-y: scroll
+    overflow-y: scroll;
+    /* animation-name: img-ani;
+    animation-duration: 4s ;
+    animation-iteration-count: 1 */
 }
 
-.w801{
-    background: url(https://media1.tenor.com/images/a9b3e91e8db7b177b0e3fa7c67a2ecfa/tenor.gif?itemid=4610991)
-}
 .fa-trash-o{
     color: red;
     cursor: pointer;
 }
+.list-group-item{
+    color: black
+}
+/* -------------------- WEATHER ANIMATIONS ---------------------- */
+/* Thunderstorm */
+div[class^="card w2"] {
+    background: url(https://media.giphy.com/media/vH1loeGlTekwg/giphy.gif);
+    color: white
+}
+/* drizzle */
+div[class^="card w3"] {
+    background: url(https://media.giphy.com/media/QPsEnRasf0Vfa/giphy.gif);
+    color: white
+}
+/* rain */
+div[class^="card w5"] {
+    background: url(https://media.giphy.com/media/ZF8mkEj1AgoCc/giphy.gif);
+    color: white
+}
+/* snow */
+div[class^="card w6"] {
+    background: url(https://media.giphy.com/media/Yy26NRbpB9lDi/giphy.gif);
+}
+/* atmosphere */
+div[class^="card w7"] {
+    background: url(https://media.giphy.com/media/SvxI24zcLnyco/giphy.gif);
+}
+/* clear */
+.w800{
+    background: url(https://media1.tenor.com/images/a9b3e91e8db7b177b0e3fa7c67a2ecfa/tenor.gif?itemid=4610991)
+}
+/* cloudy */
+.w801, .w802, .w803, .w804  {
+    background: url(https://media.giphy.com/media/KwZoSJlvep6Vy/giphy.gif)
+}
+@keyframes img-ani {
+    from{opacity:0;}
+    to{opacity: 1;}
+  }
